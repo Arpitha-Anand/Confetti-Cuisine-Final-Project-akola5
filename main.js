@@ -15,7 +15,7 @@ const express = require("express"),
   User = require("./models/user");
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:27017/confetti_cuisine",
+  process.env.MONGODB_URI || "mongodb+srv://m001-Arpitha:Ka02mg&9708@capstone2.ip2dy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   { useNewUrlParser: true, useFindAndModify: false }
 );
 mongoose.set("useCreateIndex", true);
