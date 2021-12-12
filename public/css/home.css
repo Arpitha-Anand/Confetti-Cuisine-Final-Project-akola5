@@ -1,0 +1,10 @@
+.align_items{
+    display: flex;
+    justify-content: center;
+    align-content:space-between;
+}
+
+
+.showTable{
+    margin-top: 1rem;
+}

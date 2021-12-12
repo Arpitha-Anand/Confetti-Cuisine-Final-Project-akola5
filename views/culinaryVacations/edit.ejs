@@ -1,0 +1,26 @@
+<div class="data-form">
+  <form class="form-signin" action="<%=`/culinaryVacations/${culinaryVacation._id}/update?_method=PUT`%>" method="POST">
+    <h2 class="form-signin-heading">Edit Culinary Vacations:</h2>
+    <label for="inputTitle">Title</label>
+    <input type="text" name="title" id="inputTitle" class="form-control" value="<%= culinaryVacation.title %>" placeholder="Title" autofocus>
+    <label for="inputDescription">Description</label>
+    <input type="text" name="description" id="inputDescription" class="form-control" value="<%= culinaryVacation.description %>" placeholder="Description">
+    <label for="inputHeroImage">Image</label>
+    <input type="text" name="heroImage" id="inputHeroImage" class="form-control" value="<%= culinaryVacation.heroImage %>" placeholder="Hero Image">
+    <label for="inputCuisine">Cuisine</label>
+    <input type="text" name="cuisine" id="inputCuisine" class="form-control" value="<%= culinaryVacation.cuisine %>" placeholder="cuisine">
+    <label for="inputCost">Cost</label>
+    <input type="text" name="cost" id="inputCuisine" class="form-control" value="<%= culinaryVacation.cost %>" placeholder="cost">
+    <label for="inputMaxTravelers">Max Travelers</label>
+    <input type="text" name="maxTravelers" id="inputMaxTravelers" class="form-control" value="<%= culinaryVacation.maxTravelers %>" placeholder="max Travelers">
+    <label for="inputDestination">Destination</label>
+    <input type="text" name="destination" id="inputDestination" class="form-control" value="<%= culinaryVacation.destination %>" placeholder="destination">
+    <label for="inputDepartureLocation">Departure Location</label>
+    <input type="text" name="departureLocation" id="inputDepartureLocation" class="form-control" value="<%= culinaryVacation.departureLocation %>" placeholder="departure Location">
+    <label for="inputdepartureDate">Departure Date</label>
+    <input type="date" name="departureDate" id="inputDepartureDate" class="form-control" value="<%= culinaryVacation.departureDate %>" placeholder="departure Date">
+    <label for="inputReturnDate">Return Date</label>
+    <input type="date" name="returnDate" id="inputReturnDate" class="form-control" value="<%= culinaryVacation.returnDate %>" placeholder="return Date">
+    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+  </form>
+</div>

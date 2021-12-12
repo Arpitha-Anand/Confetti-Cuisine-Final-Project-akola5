@@ -3,18 +3,32 @@
 const CulinaryVacations = require("../models/culinaryVacations"),
   httpStatus = require("http-status-codes"),
   User = require("../models/user"),
-  getCourseParams = body => {
+  getCulinaryVacationsParams = body => {
     return {
       title: body.title,
       description: body.description,
-      maxStudents: body.maxStudents,
-      cost: body.cost
+      heroImage:body.heroImage,
+      cuisine:body.cuisine,
+      cost: body.cost,
+      maxTravelers:body.maxTravelers,
+      destination:body.destination,
+      departureLocation:body.departureLocation,
+      departureDate:body.departureDate,
+      returnDate:body.returnDate
     };
   };
 
 module.exports = {
   index: (req, res, next) => {
-        next();
+    CulinaryVacations.find()
+    .then(culinaryVacation => {
+      res.locals.culinaryVacation = culinaryVacation;
+      next();
+    })
+    .catch(error => {
+      console.log(`Error fetching culinaryVacation: ${error.message}`);
+      next(error);
+    });
   },
   indexView: (req, res) => {
     res.render("culinaryVacations/index");
@@ -25,15 +39,16 @@ module.exports = {
   },
 
   create: (req, res, next) => {
-    let courseParams = getCourseParams(req.body);
-    CulinaryVacations.create(courseParams)
-      .then(course => {
+    let culinaryVacationsParams = getCulinaryVacationsParams(req.body);
+    console.log(culinaryVacationsParams.departureDate +"======="+culinaryVacationsParams.returnDate);
+    CulinaryVacations.create(culinaryVacationsParams)
+      .then(culinaryVacation => {
         res.locals.redirect = "/culinaryVacations";
-        res.locals.course = course;
+        res.locals.culinaryVacation = culinaryVacation;
         next();
       })
       .catch(error => {
-        console.log(`Error saving course: ${error.message}`);
+        console.log(`Error saving culinaryVacation: ${error.message}`);
         next(error);
       });
   },
@@ -45,14 +60,14 @@ module.exports = {
   },
 
   show: (req, res, next) => {
-    let courseId = req.params.id;
-    CulinaryVacations.findById(courseId)
-      .then(course => {
-        res.locals.course = course;
+    let culinaryVacationId = req.params.id;
+    CulinaryVacations.findById(culinaryVacationId)
+      .then(culinaryVacation => {
+        res.locals.culinaryVacation = culinaryVacation;
         next();
       })
       .catch(error => {
-        console.log(`Error fetching course by ID: ${error.message}`);
+        console.log(`Error fetching culinaryVacation by ID: ${error.message}`);
         next(error);
       });
   },
@@ -62,46 +77,46 @@ module.exports = {
   },
 
   edit: (req, res, next) => {
-    let courseId = req.params.id;
-    CulinaryVacations.findById(courseId)
-      .then(course => {
+    let culinaryVacationId = req.params.id;
+    CulinaryVacations.findById(culinaryVacationId)
+      .then(culinaryVacation => {
         res.render("culinaryVacations/edit", {
-          course: course
+          culinaryVacation: culinaryVacation
         });
       })
       .catch(error => {
-        console.log(`Error fetching course by ID: ${error.message}`);
+        console.log(`Error fetching culinaryVacation by ID: ${error.message}`);
         next(error);
       });
   },
 
   update: (req, res, next) => {
-    let courseId = req.params.id,
-      courseParams = getCourseParams(req.body);
+    let culinaryVacationId = req.params.id,
+    culinaryVacationsParams = getCulinaryVacationsParams(req.body);
 
-      CulinaryVacations.findByIdAndUpdate(courseId, {
-      $set: courseParams
+      CulinaryVacations.findByIdAndUpdate(culinaryVacationId, {
+      $set: culinaryVacationsParams
     })
-      .then(course => {
-        res.locals.redirect = `/culinaryVacations/${courseId}`;
-        res.locals.course = course;
+      .then(CulinaryVacation => {
+        res.locals.redirect = `/culinaryVacations/${culinaryVacationId}`;
+        res.locals.CulinaryVacation = CulinaryVacation;
         next();
       })
       .catch(error => {
-        console.log(`Error updating course by ID: ${error.message}`);
+        console.log(`Error updating CulinaryVacation by ID: ${error.message}`);
         next(error);
       });
   },
 
   delete: (req, res, next) => {
-    let courseId = req.params.id;
-    CulinaryVacations.findByIdAndRemove(courseId)
+    let culinaryVacationId = req.params.id;
+    CulinaryVacations.findByIdAndRemove(culinaryVacationId)
       .then(() => {
         res.locals.redirect = "/culinaryVacations";
         next();
       })
       .catch(error => {
-        console.log(`Error deleting course by ID: ${error.message}`);
+        console.log(`Error deleting culinaryVacationId by ID: ${error.message}`);
         next();
       });
   },
@@ -126,28 +141,28 @@ module.exports = {
     }
     res.json(errorObject);
   },
-  filterUserCourses: (req, res, next) => {
+  filterUserCulinaryVacation: (req, res, next) => {
     let currentUser = res.locals.currentUser;
     if (currentUser) {
-      let mappedCourses = res.locals.courses.map(course => {
-        let userJoined = currentUser.courses.some(userCourse => {
-          return userCourse.equals(course._id);
+      let mappedCulinaryVacationId = res.locals.culinaryVacation.map(culinaryVacations => {
+        let userJoined = currentUser.culinaryVacations.some(userCulinaryVacation => {
+          return userCulinaryVacation.equals(culinaryVacations._id);
         });
-        return Object.assign(course.toObject(), { joined: userJoined });
+        return Object.assign(culinaryVacations.toObject(), { joined: userJoined });
       });
-      res.locals.courses = mappedCourses;
+      res.locals.culinaryVacation = mappedCulinaryVacationId;
       next();
     } else {
       next();
     }
   },
   join: (req, res, next) => {
-    let courseId = req.params.id,
+    let culinaryVacationId = req.params.id,
       currentUser = req.user;
     if (currentUser) {
       User.findByIdAndUpdate(currentUser, {
         $addToSet: {
-          courses: courseId
+          CulinaryVacations: culinaryVacationId
         }
       })
         .then(() => {

@@ -33,7 +33,8 @@ var userSchema = new Schema(
       required: true
     },
     subscribedAccount: { type: Schema.Types.ObjectId, ref: "Subscriber" },
-    courses: [{ type: Schema.Types.ObjectId, ref: "Course" }]
+    courses: [{ type: Schema.Types.ObjectId, ref: "Course" }],
+    culinaryVacations: [{ type: Schema.Types.ObjectId, ref: "Course" }]
   },
   {
     timestamps: true

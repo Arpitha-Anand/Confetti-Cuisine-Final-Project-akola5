@@ -1,0 +1,51 @@
+<div class="data-form">
+  <form class="form-signin" action="<%=`/culinaryVacations/create`%>" method="POST">
+    <h2 class="form-signin-heading">Create Culinary Vacations:</h2>
+    <label for="inputTitle">Title</label>
+    <input type="text" name="title" id="inputTitle" class="form-control" placeholder="Title" autofocus required>
+    <label for="inputDescription">Description</label>
+    <input type="text" name="description" id="inputDescription" class="form-control" placeholder="Description" required>
+    <label for="inputHeroImage">Image</label>
+    <input type="text" name="heroImage" id="inputHeroImage" class="form-control"  placeholder="upload a image, eg:hero.jpg" required>
+    <label for="inputCuisine">Cuisine type</label>
+    <select name="cuisine" id="inputCuisine" class="form-control" required>
+      <option value="select-option">choose an option</option>
+      <option value="Continental">Continental</option>
+      <option value="Traditional">Traditional</option>
+      <option value="Haute-cuisine">Haute-cuisine</option>
+      <option value="Nouvelle-cuisine">Nouvelle-cuisine</option>
+      <option value="Fusion">Fusion</option>
+      <option value="Vegan">Vegan</option>
+      <option value="Vegetarian">Vegetarian</option>
+      <option value="Asian">Asian</option>
+      <option value="Indian">Indian</option>
+      <option value="Middle-Eastern">Middle-Eastern</option>
+      <option value="African">African</option>
+      <option value="Central American">Central American</option>
+      <option value="South American">South American</option>
+    </select>
+    <label for="inputCost">Cost</label>
+    <input type="text" name="cost" id="inputCuisine" class="form-control"  placeholder="cost" required>
+    <label for="inputMaxTravelers">Max Travelers</label>
+    <input type="text" name="maxTravelers" id="inputMaxTravelers" class="form-control"  placeholder="max Travelers" required>
+    <label for="inputDestination">Destination</label>
+    <input type="text" name="destination" id="inputDestination" class="form-control"  placeholder="vacation destination" required>
+    <label for="inputDepartureLocation">Departure Location</label>
+    <select name="departureLocation" id="inputDepartureLocation" class="form-control" required>
+      <option value="choose an option">choose an option</option>
+      <option value="New York (JFK)">New York (JFK)</option>
+      <option value="Boston (BOS)">Boston (BOS)</option>
+      <option value="Chicago (ORD)">Chicago (ORD)</option>
+      <option value="Miami (MIA)">Miami (MIA)</option>
+      <option value="St. Louis (STL)">St. Louis (STL)</option>
+      <option value="Dallas (DFW)">Dallas (DFW)</option>
+      <option value="Seattle (SEA)">Seattle (SEA)</option>
+      <option value="San Francisco (SFO)">San Francisco (SFO)</option>
+    </select>
+    <label for="inputdepartureDate">Departure Date</label>
+    <input type="date" name="departureDate" id="inputDepartureDate" class="form-control"  placeholder="departure Date" >
+    <label for="inputReturnDate">Return Date</label>
+    <input type="date" name="returnDate" id="inputReturnDate" class="form-control" placeholder="return Date" >
+    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+  </form>
+</div>

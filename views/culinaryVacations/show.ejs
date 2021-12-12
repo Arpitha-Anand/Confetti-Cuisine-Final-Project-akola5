@@ -1,0 +1,83 @@
+<h1 class="center">Course Data for
+  <%= culinaryVacation.title %>
+</h1>
+
+<img src="..\images\cuisine2.jfif" alt="Cooking for everyone!" style="max-width: 200px; max-height: 200px;">
+
+
+<table class="table showTable">
+  <tr>
+    <th>Title</th>
+    <td>
+      <%= culinaryVacation.title %>
+    </td>
+  </tr>
+  
+  <tr>
+    <th>Description</th>
+    <td>
+      <%= culinaryVacation.description%>
+    </td>
+  </tr>
+  <tr>
+    <th>Max travelers</th>
+    <td>
+      <%= culinaryVacation.maxTravelers %>
+    </td>
+  </tr>
+  <tr>
+    <th>Cost</th>
+    <td>$
+      <%= culinaryVacation.cost%>
+    </td>
+  </tr>
+  <tr>
+    <th>Cuisine</th>
+    <td>
+      <%= culinaryVacation.cuisine%>
+    </td>
+  </tr>
+  <tr>
+    <th>Hero image</th>
+    <td>
+      <%= culinaryVacation.heroImage %>
+    </td>
+  </tr>
+  <tr>
+    <th>Destination</th>
+    <td>
+      <%= culinaryVacation.destination %>
+    </td>
+  </tr>
+  <tr>
+    <th>Departure location</th>
+    <td>
+      <%= culinaryVacation.departureLocation %>
+    </td>
+  </tr>
+  <tr>
+    <th>Departure date</th>
+    <td>
+      <%= culinaryVacation.departureDate %>
+    </td>
+  </tr>
+  <tr>
+    <th>Return date</th>
+    <td>
+      <%= culinaryVacation.returnDate %>
+    </td>
+  </tr>
+</table>
+
+
+<div>
+  <a class="button" href="<%=`/culinaryVacations/${culinaryVacation._id}/edit`%>">
+    Edit Culinary Vacations Details
+  </a>
+</div>
+<div>
+  <a class="button" href="<%= `/culinaryVacations/${culinaryVacation._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')" a>Delete</a>
+</div>
+<div>
+  <a class="button" href="/culinaryVacations">View all Culinary Vacations</a>
+</div>
